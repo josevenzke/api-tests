@@ -3,5 +3,7 @@ from modifystr import views
 
 urlpatterns = [
     path('string-list/', views.StringList, name='string-list'),
-    path('string-reverse/', views.StringReverse, name='string-reverse')
+    path('string-reverse/', views.StringReverse, name='string-reverse'),
+    path('string-randomize/', views.StringRandomize, name='string-randomize'),
+
 ]
