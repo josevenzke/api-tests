@@ -22,4 +22,5 @@ from teste import views
 urlpatterns = [
     path('person-list/', views.PersonList, name='person-list'),
     path('person-add/', views.PersonCreate, name='person-add'),
+    path('modify/', include('modifystr.urls')),
 ]
