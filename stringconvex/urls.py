@@ -16,5 +16,6 @@ Including another URLconf
 from django.urls import include, path
 
 urlpatterns = [
-    path('modify/', include('modifystr.urls')),
+    path('api/modify/', include('modifystr.urls')),
+    path('api/algo/',include('algo.urls')),
 ]
