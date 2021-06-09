@@ -1,18 +1,33 @@
-def search(arr, x):
-    low = 0
-    high = len(arr) - 1
-    mid = 0
+def search(array, item):
+    baixo = 0
+    alto = len(array) - 1
+    meio = 0
 
-    while low <= high:
- 
-        mid = (high + low) // 2
-        if arr[mid] < x:
-            low = mid + 1
- 
-        elif arr[mid] > x:
-            high = mid - 1
- 
+    while baixo <= alto: 
+        meio = (alto + baixo) // 2
+        
+        if array[meio] < item:
+            baixo = meio + 1 
+        elif array[meio] > item:
+            alto = meio - 1 
         else:
-            return mid
+            return meio
     
     return -1
+
+def string_to_array(string):
+    try:
+        arrayOfStrings = string.split(",") 
+        arrayOfIntegers = [int(i) for i in arrayOfStrings]
+    except:
+        return []
+
+    return arrayOfIntegers
+
+def string_to_int(string):
+    try:
+        integer = int(string)
+    except:
+        integer = 0
+    
+    return integer
