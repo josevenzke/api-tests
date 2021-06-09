@@ -19,15 +19,16 @@ def string_to_array(string):
     try:
         arrayOfStrings = string.split(",") 
         arrayOfIntegers = [int(i) for i in arrayOfStrings]
-    except:
-        return []
+    except Exception as e:
+        return e
 
     return arrayOfIntegers
 
 def string_to_int(string):
     try:
         integer = int(string)
-    except:
-        integer = 0
+    except Exception as e:
+        return e
+        
     
     return integer
