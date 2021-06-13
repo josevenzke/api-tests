@@ -25,11 +25,3 @@ class TestSetUp(APITestCase):
     
     def tearDown(self):
         return super().tearDown()
-    
-    def test_token_no_data(self):
-        res = self.client.post(self.token_url)
-        self.assertEqual(res.status_code,400)
-    
-    def test_get_token(self):
-        res = self.client.post(self.token_url, self.login_data)
-        self.assertEqual(res.status_code,200)
