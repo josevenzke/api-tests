@@ -1,10 +1,11 @@
+from algo.views import quicksort_sort
 from .test_setup import TestSetUp
 import pdb
 
 class TestViews(TestSetUp):
 
     def test_algo_quicksort(self):     
-        res = self.client.post(self.quicksort,self.array_data)
-        sort = res.data.get('sorted_array')
+        response = self.client.post(self.quicksort,self.quicksort_array_data)
+        quicksort_array = response.data.get('sorted_array')
 
-        self.assertEqual(sort,self.array_sorted)
+        self.assertEqual(quicksort_array,self.quicksort_result)
