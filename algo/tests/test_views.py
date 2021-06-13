@@ -1,13 +1,10 @@
 from .test_setup import TestSetUp
+import pdb
 
 class TestViews(TestSetUp):
 
-    def test_token_no_data(self):
-        res = self.client.post(self.token_url)
-        self.assertEqual(res.status_code,400)
-    
-    def test_get_token(self):
-        res = self.client.post(self.token_url, self.login_data, content_type='x-www-form-urlencoded')
-        import pdb
-        pdb.set_trace()
-        self.assertEqual(res.status_code,200)
+    def test_algo_quicksort(self):     
+        res = self.client.post(self.quicksort,self.array_data)
+        sort = res.data.get('sorted_array')
+
+        self.assertEqual(sort,self.array_sorted)
