@@ -9,3 +9,9 @@ class TestViews(TestSetUp):
         quicksort_array = response.data.get('sorted_array')
 
         self.assertEqual(quicksort_array,self.quicksort_result)
+    
+    def test_algo_binary_search(self):
+        response = self.client.post(self.binary_search,self.binary_search_array_data)
+        item_index = response.data.get('item_index')
+
+        self.assertEqual(item_index,self.binary_search_result)
