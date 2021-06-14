@@ -2,9 +2,12 @@ import time
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.exceptions import APIException
+
 
 from lib import binarysearch_helper as binary
 from lib import quicksort_helper as quicksort
+from lib import converter_helper as converter
 
 # Create your views here.
 
@@ -13,24 +16,27 @@ def binary_search(request):
     arrayString = request.POST.get('array')
     itemString = request.POST.get('item')
     
-    if arrayString and itemString:
-        array = binary.string_to_array(arrayString)
-        item = binary.string_to_int(itemString)
-        index = binary.search(array,item)
-    else:
-        return Response({'Success':False})
-
+    if not all([arrayString,itemString]):
+        raise APIException({'detail':'Parametros insuficientes'})
+    
+    array = converter.string_to_array(arrayString)
+    item = converter.string_to_int(itemString)
+    
+    index = binary.search(array,item)
+    
     return Response({'Success':False ,'item_index':index,'array_lenght':len(array)})
 
 @api_view(['POST'])
 def quicksort_sort(request):
     arrayString = request.POST.get('array')
+    
     if not arrayString:
-        return Response({'Success':False})
-    array = binary.string_to_array(arrayString)
+        raise APIException({'detail':'Parametros insuficientes'})
+    
+    array = converter.string_to_array(arrayString)
 
     startTime = time.process_time()
     sortedArray = quicksort.sort(array)
     timeTaken = time.process_time() - startTime,'seconds'
 
-    return Response({'original_array': array,'sorted_array':sortedArray,'time_taken':timeTaken})
+    return Response({'Success':True,'original_array': array,'sorted_array':sortedArray,'time_taken':timeTaken})
