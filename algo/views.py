@@ -13,10 +13,9 @@ def binary_search(request):
     arrayString = request.POST.get('array')
     itemString = request.POST.get('item')
     
-    array = binary.string_to_array(arrayString)
-    item = binary.string_to_int(itemString)
-
-    if array and item:
+    if arrayString and itemString:
+        array = binary.string_to_array(arrayString)
+        item = binary.string_to_int(itemString)
         index = binary.search(array,item)
     else:
         return Response({'Success':False})
@@ -26,7 +25,8 @@ def binary_search(request):
 @api_view(['POST'])
 def quicksort_sort(request):
     arrayString = request.POST.get('array')
-
+    if not arrayString:
+        return Response({'Success':False})
     array = binary.string_to_array(arrayString)
 
     startTime = time.process_time()
