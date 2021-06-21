@@ -42,14 +42,14 @@ def StringReverse(request):
     if case_sensitive:
         string = string.lower()
 
-    reversed = string[::-1]
+    reversed_string = string[::-1]
 
-    modified = ModifyStr.objects.create(original_string=string,new_string=reversed,method='Reverse')
+    modified = ModifyStr.objects.create(original_string=string,new_string=reversed_string,method='Reverse')
     modified.save()
 
     serializer = ModifySerializer(modified,many=False)
 
-    return Response({'Success':True,'reversed':reversed,'object':serializer.data})
+    return Response({'Success':True,'reversed_string':reversed_string,'object':serializer.data})
 
 @api_view(['POST'])
 def StringRandomize(request):
