@@ -1,6 +1,5 @@
 from rest_framework.exceptions import APIException
 
-
 def string_to_array(string):
     try:
         arrayOfStrings = string.split(",") 
