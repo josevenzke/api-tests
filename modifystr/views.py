@@ -3,7 +3,7 @@ import random
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import ModifySerializer
-from modifystr import serializers
+
 
 
 # Create your views here.
