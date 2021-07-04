@@ -1,5 +1,4 @@
 from .test_setup import TestSetUp
-import pdb
 
 class TestQuicksort(TestSetUp):
 
