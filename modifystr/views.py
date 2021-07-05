@@ -70,7 +70,6 @@ def StringRandomize(request):
 
 @api_view(['POST'])
 def StringSpace(request):
-    case_sensitive = request.POST.get('case_sensitive')
     string = request.POST.get('string')
     char = request.POST.get('char')
     if not all([char,string]):
